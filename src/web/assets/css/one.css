@@ -1,0 +1,103 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    --webkit-box-sizing: border-box;
+}
+
+body {
+    background: #090c13;
+    color: rgba(255, 255, 255, 0.75);
+    overflow-x: hidden;
+    transition: 0.4s ease-out;
+    font-family: 'Open Sans', 'Poppins', 'Raleway', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .title, .subtitle, .main-text {
+    font-family: 'Poppins', 'Open Sans', 'Raleway', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(25px) brightness(0.35) saturate(2);
+    z-index: 1999;
+}
+
+.p-relative {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.navbar .p-relative > .container {
+    display: flex;
+}
+
+.navbar-line {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.15);
+    mix-blend-mode: overlay;
+}
+
+/* Page */
+.page-content {
+    position: relative;
+    min-height: calc(100vh - 112.5px);
+}
+
+/* Sections */
+.section {
+    position: relative;
+}
+
+.section.slanted {
+    transform: skewY(-2deg);
+}
+
+.section.slanted > * {
+    transform: skewY(2deg);
+}
+
+/* Helpers */
+.blur-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: black;
+    z-index: -1;
+}
+
+.blur-background > img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% + 50px);
+    height: calc(100% + 50px);
+    filter: blur(20px) saturate(2.5) brightness(0.45);
+    z-index: -1;
+}
+
+.page-background > img {
+    filter: blur(80px) saturate(2.5) brightness(0.1);
+}
+
+.blur-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 0 2.5px white;
+    mix-blend-mode: overlay;
+}

@@ -1,0 +1,8 @@
+.box {
+    position: relative;
+    border-radius: 12px;
+}
+
+.box-content {
+    padding: 1.25rem 2.4rem 1.45rem 2.4rem;
+}

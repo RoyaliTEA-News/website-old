@@ -1,0 +1,260 @@
+<title>Radios</title>
+<content>
+    <style>
+
+    </style>
+    <%
+        const radiocard = ({ id, name, tagline, logo, votes }) => {
+            return `
+            <div onclick="changePage('/radios/${id}');" class="col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="radio-card" data-id="${id}">
+                    <div class="blur-background">
+                        <div class="blur-glow" style="border-radius: 12px;"></div>
+                        <img src="${logo}">
+                    </div>
+                    <div>
+                        <div class="card-image">
+                            <img class="card-image" src="${logo}">
+                        </div>
+                        <span class="radio-name">${name}</span>
+                    </div>
+                    <div>
+                        <p class="radio-description">
+                            ${tagline || ''}
+                        </p>
+                        <p class="radio-upvotes">
+                            <span class="radio-stat d-none">
+                                <i class="far fa-fw fa-headphones"></i> <span class="radio-stat-listeners"></span>
+                            </span>
+                            <span class="radio-stat">
+                                <i class="far fa-fw fa-chevron-up"></i> ${votes}
+                            </span>
+                            <a href="" target="_blank" class="text-reset radio-discord">
+                                <span class="radio-stat d-none">
+                                    <i class="fab fa-fw fa-discord"></i> <span class="radio-stat-discord"></span>
+                                </span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            `;
+        };
+    %>
+    <style>
+        .header {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            max-height: 100%;
+        }
+
+        .header-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .header-cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgb(67 116 255);
+            background: -moz-linear-gradient(90deg, rgb(67 116 255) 0%, rgb(67 255 142 / 0.5) 100%);
+            background: -webkit-linear-gradient(90deg, rgb(67 116 255) 0%, rgb(67 255 142 / 0.5) 100%);
+            background: linear-gradient(90deg, rgb(67 116 255) 0%, rgb(67 255 142 / 0.5) 100%);
+            opacity: 0.85;
+        }
+
+        .header-image {
+            width: 100%;
+            height: 100%;
+            background: url(https://i.imgur.com/stmoLGP.jpg) center center fixed repeat;
+            background-size: contain;
+        }
+
+        .line {
+            display: block;
+            width: 120px;
+            margin-top: -5px;
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.7rem;
+        }
+
+        .radio-list {
+            padding-top: 3rem;
+            padding-bottom: 4rem;
+        }
+
+        .radio-card {
+            position: relative;
+            padding: 1rem 1.6rem;
+            border-radius: 12px;
+            margin-bottom: 28px;
+            transition: 0.4s ease-out;
+        }
+
+        .radio-card:hover {
+            cursor: pointer;
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        .radio-card .blur-background {
+            border-radius: 12px;
+        }
+
+        .card-image {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .card-image > img {
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .card-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.45);
+        }
+
+        .radio-name {
+            vertical-align: middle;
+            font-size: 1.2rem;
+            margin-left: 8px;
+            font-weight: 600;
+        }
+
+        .radio-description {
+            margin-top: 0.7rem;
+            margin-bottom: 0;
+        }
+
+        .radio-upvotes {
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            font-weight: 400;
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        .radio-stat {
+            display: inline-block;
+            padding: 5px 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            margin: 4px;
+        }
+    </style>
+    <div class="blur-background page-background">
+        <img src="https://i.imgur.com/stmoLGP.jpg">
+    </div>
+    <div class="header">
+        <div class="header-background">
+            <div class="header-cover"></div>
+            <div class="header-image"></div>
+        </div>
+        <div class="container w-100 h-100 d-flex flex-column justify-content-center align-items-md-start align-items-center">
+            <h1>Radio List</h1>
+            <img class="line" src="/assets/svg/line.svg">
+        </div>
+    </div>
+    <div class="container radio-list">
+        <div class="row">
+            <div class="col">
+                <p>
+                    <button class="btn clear update-button" onclick="toggleUpdate();">
+                        <i class="far fa-fw fa-sync fa-spin"></i> Enable Auto-Update
+                    </button>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <%-
+                radios.map(radiocard).join('\n');
+            %>
+        </div>
+    </div>
+    <script>
+        $('.radio-card')
+        .mouseenter(function(e) {
+            $.undim();
+            $(this).dimBackground();
+        })
+        .mouseleave(function(e) {
+            $.undim();
+        });
+
+        const updateStats = () => {
+            $('.radio-card').map(function() {
+                const id = $(this).data('id');
+                $.get(`/api/radios/${id}?nocache=${new Date().getTime()}`)
+                .done(({ data }) => {
+                    $(this).find('.radio-stat-listeners').text(data.station.listeners);
+                    $(this).find('.radio-stat-listeners').parent().removeClass('d-none');
+                    if (data.station.discord) {
+                        $(this).find('.radio-discord').attr('href', data.station.discord);
+                        $.get(`https://discord.com/api/v8/invites/${data.station.discord.split('discord.gg/')[1]}?with_counts=true`)
+                        .done(({ approximate_member_count: members }) => {
+                            $(this).find('.radio-stat-discord').text(members);
+                            $(this).find('.radio-stat-discord').parent().removeClass('d-none');
+                        })
+                        .fail((err) => {
+                            $(this).find('.radio-stat-discord').parent().addClass('d-none');
+                        });
+                    } else {
+                        $(this).find('.radio-stat-discord').parent().addClass('d-none');
+                    };
+                })
+                .fail(() => {
+                    $(this).find('.radio-stat-listeners').text(0);
+                    $(this).find('.radio-stat-listeners').parent().removeClass('d-none');
+                });
+            });
+        };
+
+        const toggleUpdate = () => {
+            if (window.statsUpdateInterval) {
+                disableUpdate();
+                $('.update-button').html(`<i class="far fa-fw fa-sync fa-spin"></i> Enable Auto-Update`);
+            } else {
+                enableUpdate();
+                $('.update-button').html(`<i class="far fa-fw fa-times"></i> Disable Auto-Update`);
+            };
+        };
+
+        const enableUpdate = () => {
+            clearInterval(window.statsUpdateInterval);
+            window.statsUpdateInterval = setInterval(updateStats, 30*1000);
+        };
+
+        const disableUpdate = () => {
+            clearInterval(window.statsUpdateInterval);
+            delete window.statsUpdateInterval;
+        };
+
+        updateStats();
+    </script>
+</content>

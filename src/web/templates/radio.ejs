@@ -1,0 +1,43 @@
+<title>About <%= station.radio.name %></title>
+<content>
+    <style>
+        .radio-logo > img {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width:100px;
+            height:100px;
+            z-index: 1;
+            border-radius: 12px;
+        }
+    </style>
+    <div class="blur-background page-background">
+        <div class="radio-logo">
+            <div class="blur-glow"></div>
+            <img src="<%= station.radio.logo %>">
+        </div>
+            <div class="container pt-5">
+                        <img src="https://i.imgur.com/VlbQeZc.jpg">
+                    </div>
+                    <div class="box-content">
+                        <small>About</small>
+                        <h1><%= station.radio.name %></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="box">
+                    <div class="blur-glow" style="border-radius: 12px;"></div>
+                    <div class="blur-background">
+                        <img src="<%= station.radio.logo %>">
+                    </div>
+                    <div class="box-content">
+                </div>
+hi
+                    </div>            </div>
+        </div>
+    </div>
+    <%-
+        station.listeners
+    %>
+</content>

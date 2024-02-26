@@ -1,0 +1,132 @@
+<title>Home</title>
+<content>
+    <style>
+        .home-header {
+            position: relative;
+            height: 400px;
+        }
+
+        .home-header .row > div {
+            align-items: center;
+            display: flex;
+            margin-top: -20px;
+            padding: 5rem;
+        }
+
+        .section-1 {
+            margin-top: -35px;
+            height: 380px;
+            background: rgb(251,107,107);
+            background: -moz-linear-gradient(90deg, rgba(251,107,107,1) 0%, rgba(255,125,67,1) 100%);
+            background: -webkit-linear-gradient(90deg, rgba(251,107,107,1) 0%, rgba(255,125,67,1) 100%);
+            background: linear-gradient(90deg, rgba(251,107,107,1) 0%, rgba(255,125,67,1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fb6b6b",endColorstr="#ff7d43",GradientType=1);
+        }
+
+        .section-1 > .container {
+            margin: auto 8rem;
+        }
+
+        .section-1 .col-lg-8 {
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 6rem;
+        }
+
+        .home-header h1 {
+            font-family: 'Oxygen', 'Open Sans', 'Raleway', var(--bs-sans-serif);
+            color: white;
+            font-size: 3rem;
+        }
+
+        .section-1 h3 {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .home-header .blur-background > img {
+            filter: blur(100px) saturate(3.5) brightness(0.2);
+        }
+
+        .home-slant {
+            position: absolute;
+            bottom: -55px;
+            left: 0;
+            z-index: -1;
+        }
+
+        .discord-btn {
+            color: white;
+            background: #7289DA;
+            font-family: 'Oxygen', 'Raleway', 'Open Sans', var(--bs-sans-serif);
+            font-weight: 400;
+            font-size: 1.1rem;
+            animation: pulse 1.5s infinite ease;
+        }
+
+        .home-image {
+            width: 100%;
+            animation: flying 2.5s infinite ease-in-out;
+            border-radius: 10px;
+        }
+
+        @keyframes flying {
+            0% {
+                box-shadow: 0 2.5px 10px rgb(0 0 0 / 0.35);
+                transform: translateY(-2.5px);
+            }
+            50% {
+                box-shadow: 0 5px 25px rgb(0 0 0 / 0.85);
+                transform: translateY(2.5px);
+            }
+            100% {
+                box-shadow: 0 2.5px 10px rgb(0 0 0 / 0.35);
+                transform: translateY(-2.5px);
+            }
+        }
+
+        @-webkit-keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 0 50px rgba(#5a99d4, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(#5a99d4, 0);
+            }
+        }
+    </style>
+    <div class="home-header container-fluid">
+        <div class="blur-background">
+            <img draggable="false" src="///cdn.discordapp.com/avatars/264617372227338241/b0011ed523c00f107561ec2a59dfa957.png">
+        </div>
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col h-100">
+                    <h1>
+                        Your favourite radio news, tea, and leaks.
+                    </h1>
+                </div>
+                <div class="col-lg-6 col-md-4 d-none d-md-flex flex-row-reverse">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section slanted section-1">
+        <div class="container h-100">
+            <div class="row h-100 g-0">
+                <div class="col d-none d-md-flex align-items-center h-100">
+                    <img class="home-image" src="https://repeat.has-banned.me/Discord_D4ouVdeX5B.png">
+                </div>
+                <div class="col-lg-8 d-flex align-items-md-start pl-0 pl-md-5 align-items-center h-100">
+                    <h3 class="mb-0">Don't miss out on a thing.</h3>
+                    <p>Join our Discord server.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</content>

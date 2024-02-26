@@ -1,0 +1,25 @@
+.pace {
+    -webkit-pointer-events: none;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  
+.pace-inactive {
+    display: none;
+}
+  
+.pace .pace-progress {
+    background: rgb(251,107,107);
+    background: -moz-linear-gradient(90deg, rgba(251,107,107,1) 0%, rgba(255,125,67,1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(251,107,107,1) 0%, rgba(255,125,67,1) 100%);
+    background: linear-gradient(90deg, rgba(251,107,107,1) 0%, rgba(255,125,67,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fb6b6b",endColorstr="#ff7d43",GradientType=1);
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    right: 100%;
+    width: 100%;
+    height: 2.5px;
+}
